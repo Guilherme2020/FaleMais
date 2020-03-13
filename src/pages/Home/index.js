@@ -13,13 +13,13 @@ export default function Home() {
     <React.Fragment>
       <CssBaseline />
       <Header />
-      <Container maxWidth="sm">
+      <Container maxWidth="sm lg">
         <Typography
           component="div"
-          style={{ backgroundColor: "#ffffff", height: 30 }}
+          style={{ backgroundColor: "transparent", height: 30 }}
         />
+        <SimpleTable list={listNumbersCall} />
       </Container>
-      <SimpleTable />
 
       {/* <SimpleTable /> */}
     </React.Fragment>

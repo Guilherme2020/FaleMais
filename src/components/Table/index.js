@@ -7,6 +7,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   table: {
@@ -26,7 +27,7 @@ const rows = [
   createData("Gingerbread", 356, 16.0, 49, 3.9)
 ];
 
-export default function SimpleTable() {
+export default function SimpleTable({ list }) {
   const classes = useStyles();
 
   return (
@@ -34,23 +35,28 @@ export default function SimpleTable() {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">id</TableCell>
-            <TableCell align="right">Origem&nbsp;(g)</TableCell>
-            <TableCell align="right">Destino&nbsp;(g)</TableCell>
-            <TableCell align="right">$/Min/&nbsp;(g)</TableCell>
+            <TableCell align="center">id</TableCell>
+            <TableCell align="right">Origem&nbsp;</TableCell>
+            <TableCell align="right">Destino&nbsp;</TableCell>
+            <TableCell align="right">$/Min/&nbsp;</TableCell>
+            <TableCell align="center">Ação</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
+          {list.map(row => (
+            <TableRow key={row.id}>
+              <TableCell align="center" component="th" scope="row">
+                {row.id}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{row.origin}</TableCell>
+              <TableCell align="right">{row.destiny}</TableCell>
+              <TableCell align="right">{row.valueForMin}</TableCell>
+              {/* <TableCell align="right">{row.valueForMin}</TableCell> */}
+              <TableCell align="center">
+                <Button variant="contained" color="primary">
+                  Primary
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
