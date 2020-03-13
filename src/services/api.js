@@ -1,4 +1,4 @@
-export function loadList() {
+export function loadLists() {
   return [
     {
       id: 1,
