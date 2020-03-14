@@ -6,11 +6,8 @@ import TextField from "@material-ui/core/TextField";
 import SimpleTable from "../../components/Table";
 import InputLabel from "@material-ui/core/InputLabel";
 import { makeStyles } from "@material-ui/core/styles";
-
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import NativeSelect from "@material-ui/core/NativeSelect";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -21,20 +18,9 @@ import Header from "../../components/Header";
 import api from "../../services/api";
 import { MenuItem } from "@material-ui/core";
 
-const plansSelect = [
-  {
-    id: 1,
-    plan: "30"
-  },
-  {
-    id: 2,
-    plan: "60"
-  },
-  {
-    id: 3,
-    plan: "120"
-  }
-];
+// const plansSelect = [
+
+// ];
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -49,6 +35,20 @@ const useStyles = makeStyles(theme => ({
 export default function Home() {
   const [listNumbersCall, setListNumbers] = useState([]);
   const [countMin, setCountMin] = useState("");
+  const [plansSelect] = useState([
+    {
+      id: 1,
+      plan: "30"
+    },
+    {
+      id: 2,
+      plan: "60"
+    },
+    {
+      id: 3,
+      plan: "120"
+    }
+  ]);
   const [selectedPlan, setSelectedPlan] = useState("");
   const [detailIten, setDetailIten] = useState({});
   const [open, setOpen] = useState(false);
@@ -63,10 +63,12 @@ export default function Home() {
   useEffect(() => {
     onFetchData();
   }, []);
+
   const handleChange = event => {
     console.log("event", event);
     setSelectedPlan(event.target.value);
   };
+
   const renderOptions = () => {
     return plansSelect.map(i => {
       return (
@@ -75,13 +77,13 @@ export default function Home() {
           value={i.plan}
           key={i.id}
           name={i.plan}
-          // onClick={() => console.log(i)}
         >
           {i.plan}
         </MenuItem>
       );
     });
   };
+
   const detailItens = item => {
     console.log(item);
     setDetailIten(item);
@@ -100,6 +102,7 @@ export default function Home() {
   const handleClose = () => {
     setOpen(false);
     setDetailIten({});
+    clearState();
   };
 
   const calculateNotPlan = (count, valueMin) => {
@@ -110,18 +113,18 @@ export default function Home() {
     });
     return `${formate}`;
   };
+
   const calculateWithPlan = () => {
     let plan = selectedPlan;
     let count = countMin;
     let diff = count - plan;
     let calc = 0;
-    console.log("entrou aq");
     const percent = (10 / 100) * detailIten.valueForMin * diff;
     console.log(percent);
     calc = detailIten.valueForMin * diff;
 
     let final = calc + percent;
-    if (diff < plan) {
+    if (final < 0) {
       final = 0;
     }
     return final.toLocaleString("pt-BR", {
@@ -129,6 +132,12 @@ export default function Home() {
       currency: "BRL"
     });
   };
+
+  const clearState = () => {
+    setCountMin("");
+    setSelectedPlan("");
+  };
+
   const renderModal = () => {
     return (
       <Dialog
@@ -182,6 +191,7 @@ export default function Home() {
       </Dialog>
     );
   };
+
   const renderModalAlertErr = () => {
     return (
       <Dialog
@@ -206,6 +216,7 @@ export default function Home() {
       </Dialog>
     );
   };
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -218,8 +229,6 @@ export default function Home() {
         />
         <SimpleTable list={listNumbersCall} detail={detailItens} />
       </Container>
-
-      {/* <SimpleTable /> */}
     </React.Fragment>
   );
 }
