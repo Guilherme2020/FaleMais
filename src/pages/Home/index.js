@@ -121,6 +121,9 @@ export default function Home() {
     calc = detailIten.valueForMin * diff;
 
     let final = calc + percent;
+    if (diff < plan) {
+      final = 0;
+    }
     return final.toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL"
