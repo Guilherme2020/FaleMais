@@ -89,7 +89,6 @@ export default function Home() {
       }));
       setOriginList(originList);
       setDestinyList(destinyList);
-      console.log(dataTableSimulate);
     }
   }, [listNumbersCall, dataTableSimulate]);
 
@@ -165,14 +164,14 @@ export default function Home() {
     console.log(countMin);
     console.log(selectedPlan);
 
-    let valueOfMin = 0;
+    let valueOfMin = "5.90"; // value default case not find item in forEach
 
+    let index = listNumbersCall.findIndex(val => val.origin === selectOrigin);
+    console.log("index", index);
     listNumbersCall.forEach(i => {
       if (i.origin === selectOrigin && i.destiny === selectDestiny) {
+        console.log("?");
         valueOfMin = i.valueForMin;
-      } else {
-        const defaultPrice = "5.90";
-        valueOfMin = defaultPrice;
       }
     });
 
@@ -195,6 +194,7 @@ export default function Home() {
     ) {
       setDataTableSimulate([dataTable, ...dataTableSimulate]);
     } else {
+      setErrModal(true);
     }
   };
   const renderModalAlertErr = () => {
@@ -205,9 +205,7 @@ export default function Home() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Aviso"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Por Favor Preencha todos os campos :)
@@ -226,6 +224,8 @@ export default function Home() {
       <CssBaseline />
       <Header />
       <Container maxWidth="xs sm md lg xl">
+        {renderModalAlertErr()}
+
         <h1 style={{ textAlign: "center" }}>Simulação</h1>
         <Paper elevation={3}>
           <div
