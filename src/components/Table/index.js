@@ -7,7 +7,6 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   table: {
@@ -28,7 +27,6 @@ export default function SimpleTable({ list, detail }) {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              {/* <TableCell align="center">id</TableCell> */}
               <TableCell align="center">Origem&nbsp;</TableCell>
               <TableCell align="center">Destino&nbsp;</TableCell>
               <TableCell align="center">$/Min/&nbsp;</TableCell>
@@ -41,9 +39,6 @@ export default function SimpleTable({ list, detail }) {
           <TableBody>
             {list.map(row => (
               <TableRow key={row.id}>
-                {/* <TableCell align="center" component="th" scope="row">
-                  {row.id}
-                </TableCell> */}
                 <TableCell align="center">{row.origin}</TableCell>
                 <TableCell align="center">{row.destiny}</TableCell>
                 <TableCell align="center">{row.valueForMin}</TableCell>
@@ -51,17 +46,6 @@ export default function SimpleTable({ list, detail }) {
                 <TableCell align="center">Fale {row.planChoise}</TableCell>
                 <TableCell align="center">{row.withPlan}</TableCell>
                 <TableCell align="center">{row.withoutPlan}</TableCell>
-
-                {/* <TableCell align="right">{row.valueForMin}</TableCell> */}
-                {/* <TableCell align="center">
-                  <Button
-                    onClick={() => detail(row)}
-                    variant="contained"
-                    color="primary"
-                  >
-                    Visualizar
-                  </Button>
-                </TableCell> */}
               </TableRow>
             ))}
           </TableBody>

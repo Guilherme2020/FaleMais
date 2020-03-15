@@ -1,21 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import TextField from "@material-ui/core/TextField";
+import {
+  CssBaseline,
+  Typography,
+  Container,
+  TextField,
+  InputLabel,
+  Select,
+  FormControl,
+  Button,
+  MenuItem,
+  Paper,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from "@material-ui/core";
+
 import SimpleTable from "../../components/Table";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import Button from "@material-ui/core/Button";
 import Header from "../../components/Header";
-import { MenuItem } from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import api from "../../services/api";
 import { calculateWithoutPlan, calculateWithPlan } from "../../utils/";
 import { useStyles } from "./styles";
@@ -139,7 +142,9 @@ export default function Home() {
       withPlan: calculateWithPlan(selectedPlan, countMin, valueOfMin),
       withoutPlan: calculateWithoutPlan(countMin, valueOfMin)
     };
+
     console.log("datable mount", dataTable);
+
     if (
       selectOrigin !== "" &&
       (selectDestiny !== "") & (countMin !== "") &&
