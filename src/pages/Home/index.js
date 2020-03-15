@@ -54,7 +54,7 @@ export default function Home() {
 
   const [selectedPlan, setSelectedPlan] = useState("");
   const [detailIten, setDetailIten] = useState({});
-
+  const [dataTableSimulate, setDataTableSimulate] = useState([]);
   const [originList, setOriginList] = useState([]);
   const [destinyList, setDestinyList] = useState([]);
   const [selectOrigin, setSelectOrigin] = useState("");
@@ -85,8 +85,9 @@ export default function Home() {
       }));
       setOriginList(originList);
       setDestinyList(destinyList);
+      console.log(dataTableSimulate);
     }
-  }, [listNumbersCall]);
+  }, [listNumbersCall, dataTableSimulate]);
 
   const handleChangeOrigin = event => {
     setSelectOrigin(event.target.value);
@@ -133,7 +134,7 @@ export default function Home() {
   //   // setOpen(true);
   // };
 
-  const calculateNotPlan = (count, valueMin) => {
+  const calculateWithoutPlan = (count, valueMin) => {
     let value = count * valueMin;
     let formate = value.toLocaleString("pt-BR", {
       style: "currency",
@@ -142,14 +143,14 @@ export default function Home() {
     return `${formate}`;
   };
 
-  const calculateWithPlan = () => {
+  const calculateWithPlan = valueForMin => {
     let plan = selectedPlan;
     let count = countMin;
     let diff = count - plan;
     let calc = 0;
-    const percent = (10 / 100) * detailIten.valueForMin * diff;
+    const percent = (10 / 100) * valueForMin * diff;
     // console.log(percent);
-    calc = detailIten.valueForMin * diff;
+    calc = valueForMin * diff;
 
     let final = calc + percent;
     if (final < 0) {
@@ -171,23 +172,33 @@ export default function Home() {
     listNumbersCall.forEach(i => {
       if (i.origin === selectOrigin && i.destiny === selectDestiny) {
         valueOfMin = i.valueForMin;
-      } else {
-        const defaultPrice = "5.90";
-        valueOfMin = defaultPrice;
       }
+      // else {
+      //   const defaultPrice = "5.90";
+      //   valueOfMin = defaultPrice;
+      // }
     });
 
     console.log(valueOfMin);
+
+    const dataTable = {
+      origin: selectOrigin,
+      destiny: selectDestiny,
+      valueForMin: valueOfMin,
+      time: countMin,
+      planChoise: selectedPlan,
+      withPlan: calculateWithPlan(valueOfMin),
+      withoutPlan: calculateWithoutPlan(countMin, valueOfMin)
+    };
+    console.log("datable mount", dataTable);
+
+    setDataTableSimulate([dataTable, ...dataTableSimulate]);
   };
   return (
     <React.Fragment>
       <CssBaseline />
       <Header />
       <Container maxWidth="xs sm md lg xl">
-        <Typography
-          component="div"
-          style={{ backgroundColor: "transparent", height: 30 }}
-        />
         <h1 style={{ textAlign: "center" }}>Simulação</h1>
         <Paper elevation={3}>
           <div
@@ -200,6 +211,7 @@ export default function Home() {
               style={{
                 display: "flex",
                 width: "100%",
+                paddingTop: 10,
                 alignItems: "center",
                 justifyContent: "center"
               }}
@@ -218,9 +230,6 @@ export default function Home() {
                   onChange={handleChangeOrigin}
                   labelWidth={labelWidth}
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
                   {renderOptionsOrigin()}
                 </Select>
               </FormControl>
@@ -238,9 +247,6 @@ export default function Home() {
                   onChange={handleChangeDestiny}
                   labelWidth={labelWidth}
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
                   {renderOptionsDestiny()}
                 </Select>
               </FormControl>
@@ -267,9 +273,6 @@ export default function Home() {
                   onChange={event => setSelectedPlan(event.target.value)}
                   labelWidth={labelWidth}
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
                   {renderOptionsPlan()}
                 </Select>
               </FormControl>
@@ -291,8 +294,13 @@ export default function Home() {
             </div>
           </div>
         </Paper>
-
-        {/* <SimpleTable list={listNumbersCall} detail={detailItens} /> */}
+        <Typography
+          component="div"
+          style={{ backgroundColor: "transparent", height: 30 }}
+        />
+        {dataTableSimulate.length > 0 && (
+          <SimpleTable list={dataTableSimulate} />
+        )}
       </Container>
     </React.Fragment>
   );

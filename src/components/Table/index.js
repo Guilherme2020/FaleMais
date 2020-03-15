@@ -25,13 +25,13 @@ export default function SimpleTable({ list, detail }) {
           <TableHead>
             <TableRow>
               {/* <TableCell align="center">id</TableCell> */}
-              <TableCell align="right">Origem&nbsp;</TableCell>
-              <TableCell align="right">Destino&nbsp;</TableCell>
-              <TableCell align="right">$/Min/&nbsp;</TableCell>
+              <TableCell align="center">Origem&nbsp;</TableCell>
+              <TableCell align="center">Destino&nbsp;</TableCell>
+              <TableCell align="center">$/Min/&nbsp;</TableCell>
               <TableCell align="center">Tempo</TableCell>
-              <TableCell>Plano FM</TableCell>
-              <TableCell>Com o Plano</TableCell>
-              <TableCell>Sem o Plano</TableCell>
+              <TableCell align="center">Plano FM</TableCell>
+              <TableCell align="center">Com o Plano</TableCell>
+              <TableCell align="center">Sem o Plano</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -40,12 +40,13 @@ export default function SimpleTable({ list, detail }) {
                 {/* <TableCell align="center" component="th" scope="row">
                   {row.id}
                 </TableCell> */}
-                <TableCell align="right">{row.origin}</TableCell>
-                <TableCell align="right">{row.destiny}</TableCell>
-                <TableCell align="right">{row.valueForMin}</TableCell>
-                <TableCell align="right">{row.time}</TableCell>
-                <TableCell align="right">{row.planChoise}</TableCell>
-                <TableCell align="right">{row.withoutPlan}</TableCell>
+                <TableCell align="center">{row.origin}</TableCell>
+                <TableCell align="center">{row.destiny}</TableCell>
+                <TableCell align="center">{row.valueForMin}</TableCell>
+                <TableCell align="center">{row.time}</TableCell>
+                <TableCell align="center">Fale {row.planChoise}</TableCell>
+                <TableCell align="center">{row.withPlan}</TableCell>
+                <TableCell align="center">{row.withoutPlan}</TableCell>
 
                 {/* <TableCell align="right">{row.valueForMin}</TableCell> */}
                 {/* <TableCell align="center">
