@@ -121,8 +121,6 @@ export default function Home() {
 
     let valueOfMin = "5.90"; // value default case not find item in forEach
 
-    let index = listNumbersCall.findIndex(val => val.origin === selectOrigin);
-    console.log("index", index);
     listNumbersCall.forEach(i => {
       if (i.origin === selectOrigin && i.destiny === selectDestiny) {
         console.log("?");
