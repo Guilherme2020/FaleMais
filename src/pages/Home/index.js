@@ -5,12 +5,10 @@ import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import SimpleTable from "../../components/Table";
 import InputLabel from "@material-ui/core/InputLabel";
-import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import Header from "../../components/Header";
-import api from "../../services/api";
 import { MenuItem } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Dialog from "@material-ui/core/Dialog";
@@ -18,41 +16,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2)
-  },
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: 200
-    }
-  },
-  container: {
-    width: "100%",
-    height: 180
-  },
-  title: {
-    textAlign: "center"
-  },
-  form: {
-    display: "flex",
-    width: "100%",
-    paddingTop: 10,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  btnForm: {
-    padding: 10,
-    paddingTop: 50,
-    width: "100%"
-  }
-}));
+import api from "../../services/api";
+import { calculateWithoutPlan, calculateWithPlan } from "../../utils/";
+import { useStyles } from "./styles";
 
 export default function Home() {
   const [listNumbersCall, setListNumbers] = useState([]);
@@ -147,33 +113,6 @@ export default function Home() {
     setErrModal(false);
   };
 
-  const calculateWithoutPlan = (count, valueMin) => {
-    let value = count * valueMin;
-    let formate = value.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL"
-    });
-    return `${formate}`;
-  };
-
-  const calculateWithPlan = valueForMin => {
-    let plan = selectedPlan;
-    let count = countMin;
-    let diff = count - plan;
-    let calc = 0;
-    const percent = (10 / 100) * valueForMin * diff;
-    // console.log(percent);
-    calc = valueForMin * diff;
-
-    let final = calc + percent;
-    if (final < 0) {
-      final = 0;
-    }
-    return final.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL"
-    });
-  };
   const verifyTarifOfPhone = () => {
     console.log(selectOrigin);
     console.log(selectDestiny);
@@ -192,14 +131,14 @@ export default function Home() {
     });
 
     console.log(valueOfMin);
-
+    // selectedPlan,countMin
     const dataTable = {
       origin: selectOrigin,
       destiny: selectDestiny,
       valueForMin: valueOfMin,
       time: countMin,
       planChoise: selectedPlan,
-      withPlan: calculateWithPlan(valueOfMin),
+      withPlan: calculateWithPlan(selectedPlan, countMin, valueOfMin),
       withoutPlan: calculateWithoutPlan(countMin, valueOfMin)
     };
     console.log("datable mount", dataTable);
