@@ -13,7 +13,11 @@ import Header from "../../components/Header";
 import api from "../../services/api";
 import { MenuItem } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
-
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 // const plansSelect = [
 
 // ];
@@ -53,13 +57,13 @@ export default function Home() {
   ]);
 
   const [selectedPlan, setSelectedPlan] = useState("");
-  const [detailIten, setDetailIten] = useState({});
   const [dataTableSimulate, setDataTableSimulate] = useState([]);
   const [originList, setOriginList] = useState([]);
   const [destinyList, setDestinyList] = useState([]);
   const [selectOrigin, setSelectOrigin] = useState("");
   const [selectDestiny, setSelectDestiny] = useState("");
   const inputLabel = useRef(null);
+  const [errModal, setErrModal] = useState(false);
   const [labelWidth, setLabelWidth] = useState(0);
   const classes = useStyles();
   const onFetchData = async () => {
@@ -123,16 +127,10 @@ export default function Home() {
       );
     });
   };
-  const detailItens = item => {
-    console.log(item);
-    setDetailIten(item);
-  };
 
-  // const detail = async item => {
-  //   console.log("console.log", item);
-  //   setDetailIten(item);
-  //   // setOpen(true);
-  // };
+  const handleCloseErrModal = () => {
+    setErrModal(false);
+  };
 
   const calculateWithoutPlan = (count, valueMin) => {
     let value = count * valueMin;
@@ -172,11 +170,10 @@ export default function Home() {
     listNumbersCall.forEach(i => {
       if (i.origin === selectOrigin && i.destiny === selectDestiny) {
         valueOfMin = i.valueForMin;
+      } else {
+        const defaultPrice = "5.90";
+        valueOfMin = defaultPrice;
       }
-      // else {
-      //   const defaultPrice = "5.90";
-      //   valueOfMin = defaultPrice;
-      // }
     });
 
     console.log(valueOfMin);
@@ -191,8 +188,38 @@ export default function Home() {
       withoutPlan: calculateWithoutPlan(countMin, valueOfMin)
     };
     console.log("datable mount", dataTable);
-
-    setDataTableSimulate([dataTable, ...dataTableSimulate]);
+    if (
+      selectOrigin !== "" &&
+      (selectDestiny !== "") & (countMin !== "") &&
+      selectedPlan !== ""
+    ) {
+      setDataTableSimulate([dataTable, ...dataTableSimulate]);
+    } else {
+    }
+  };
+  const renderModalAlertErr = () => {
+    return (
+      <Dialog
+        open={errModal}
+        onClose={handleCloseErrModal}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Use Google's location service?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Por Favor Preencha todos os campos :)
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseErrModal} color="primary">
+            ok
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
   };
   return (
     <React.Fragment>
