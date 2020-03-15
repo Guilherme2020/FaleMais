@@ -24,24 +24,31 @@ export default function SimpleTable({ list, detail }) {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center">id</TableCell>
+              {/* <TableCell align="center">id</TableCell> */}
               <TableCell align="right">Origem&nbsp;</TableCell>
               <TableCell align="right">Destino&nbsp;</TableCell>
               <TableCell align="right">$/Min/&nbsp;</TableCell>
-              <TableCell align="center">Ação</TableCell>
+              <TableCell align="center">Tempo</TableCell>
+              <TableCell>Plano FM</TableCell>
+              <TableCell>Com o Plano</TableCell>
+              <TableCell>Sem o Plano</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {list.map(row => (
               <TableRow key={row.id}>
-                <TableCell align="center" component="th" scope="row">
+                {/* <TableCell align="center" component="th" scope="row">
                   {row.id}
-                </TableCell>
+                </TableCell> */}
                 <TableCell align="right">{row.origin}</TableCell>
                 <TableCell align="right">{row.destiny}</TableCell>
                 <TableCell align="right">{row.valueForMin}</TableCell>
+                <TableCell align="right">{row.time}</TableCell>
+                <TableCell align="right">{row.planChoise}</TableCell>
+                <TableCell align="right">{row.withoutPlan}</TableCell>
+
                 {/* <TableCell align="right">{row.valueForMin}</TableCell> */}
-                <TableCell align="center">
+                {/* <TableCell align="center">
                   <Button
                     onClick={() => detail(row)}
                     variant="contained"
@@ -49,7 +56,7 @@ export default function SimpleTable({ list, detail }) {
                   >
                     Visualizar
                   </Button>
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             ))}
           </TableBody>
