@@ -12,6 +12,9 @@ import Button from "@material-ui/core/Button";
 const useStyles = makeStyles({
   table: {
     minWidth: 650
+  },
+  titleTable: {
+    textAlign: "center"
   }
 });
 
@@ -20,6 +23,7 @@ export default function SimpleTable({ list, detail }) {
 
   return (
     <>
+      <h1 className={classes.titleTable}>Simuções dos preços de chamadas </h1>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>

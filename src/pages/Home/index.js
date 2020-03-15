@@ -18,9 +18,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-// const plansSelect = [
-
-// ];
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -35,6 +32,25 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(1),
       width: 200
     }
+  },
+  container: {
+    width: "100%",
+    height: 180
+  },
+  title: {
+    textAlign: "center"
+  },
+  form: {
+    display: "flex",
+    width: "100%",
+    paddingTop: 10,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  btnForm: {
+    padding: 10,
+    paddingTop: 50,
+    width: "100%"
   }
 }));
 
@@ -226,23 +242,10 @@ export default function Home() {
       <Container maxWidth="xs sm md lg xl">
         {renderModalAlertErr()}
 
-        <h1 style={{ textAlign: "center" }}>Simulação</h1>
+        <h1 className={classes.title}>Simulação</h1>
         <Paper elevation={3}>
-          <div
-            style={{
-              width: "100%",
-              height: 180
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                width: "100%",
-                paddingTop: 10,
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
+          <div className={classes.container}>
+            <div className={classes.form}>
               <FormControl variant="outlined" className={classes.root}>
                 <InputLabel
                   ref={inputLabel}
@@ -304,13 +307,7 @@ export default function Home() {
                 </Select>
               </FormControl>
             </div>
-            <div
-              style={{
-                padding: 10,
-                paddingTop: 50,
-                width: "100%"
-              }}
-            >
+            <div className={classes.btnForm}>
               <Button
                 onClick={() => verifyTarifOfPhone()}
                 variant="contained"
