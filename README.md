@@ -13,7 +13,7 @@
 
 <p align="center">
   <a href="https://opensource.org/licenses/MIT">
-    <img src="screenshots/falemais-02.png" alt="License MIT">
+    <img src="screenshots/falemais-last.png" alt="License MIT">
   </a>
 </p>
 

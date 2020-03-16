@@ -23,7 +23,7 @@ const SimpleTable = ({ list }) => {
             <TableRow>
               <TableCell align="center">Origem&nbsp;</TableCell>
               <TableCell align="center">Destino&nbsp;</TableCell>
-              <TableCell align="center">$/Min&nbsp;</TableCell>
+              <TableCell align="center">Valor/Min&nbsp;</TableCell>
               <TableCell align="center">Tempo</TableCell>
               <TableCell align="center">Plano FM</TableCell>
               <TableCell align="center">Com o Plano</TableCell>
@@ -35,8 +35,8 @@ const SimpleTable = ({ list }) => {
               <TableRow key={row.planChoise}>
                 <TableCell align="center">{row.origin}</TableCell>
                 <TableCell align="center">{row.destiny}</TableCell>
-                <TableCell align="center">{row.valueForMin}</TableCell>
-                <TableCell align="center">{row.time}</TableCell>
+                <TableCell align="center">R$ {row.valueForMin}</TableCell>
+                <TableCell align="center">{row.time} min</TableCell>
                 <TableCell align="center">Fale {row.planChoise}</TableCell>
                 <TableCell align="center">{row.withPlan}</TableCell>
                 <TableCell align="center">{row.withoutPlan}</TableCell>
