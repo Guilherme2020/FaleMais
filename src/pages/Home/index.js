@@ -9,16 +9,11 @@ import {
   FormControl,
   Button,
   MenuItem,
-  Paper,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle
+  Paper
 } from "@material-ui/core";
-
 import SimpleTable from "../../components/Table";
 import Header from "../../components/Header";
+import ModalError from "../../components/Modal";
 import api from "../../services/api";
 import { calculateWithoutPlan, calculateWithPlan } from "../../utils/";
 import { useStyles } from "./styles";
@@ -48,7 +43,7 @@ export default function Home() {
   const [selectOrigin, setSelectOrigin] = useState("");
   const [selectDestiny, setSelectDestiny] = useState("");
   const inputLabel = useRef(null);
-  const [errModal, setErrModal] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
   const [labelWidth, setLabelWidth] = useState(0);
   const classes = useStyles();
   const onFetchData = async () => {
@@ -112,8 +107,8 @@ export default function Home() {
     });
   };
 
-  const handleCloseErrModal = () => {
-    setErrModal(false);
+  const handleCloseErrorModal = () => {
+    setErrorModal(false);
   };
 
   const verifyTarifOfPhone = () => {
@@ -152,38 +147,19 @@ export default function Home() {
     ) {
       setDataTableSimulate([dataTable, ...dataTableSimulate]);
     } else {
-      setErrModal(true);
+      setErrorModal(true);
     }
   };
-  const renderModalAlertErr = () => {
-    return (
-      <Dialog
-        open={errModal}
-        onClose={handleCloseErrModal}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">{"Aviso"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Por Favor Preencha todos os campos :)
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseErrModal} color="primary">
-            ok
-          </Button>
-        </DialogActions>
-      </Dialog>
-    );
-  };
+
   return (
     <React.Fragment>
       <CssBaseline />
       <Header />
       <Container maxWidth="xs sm md lg xl">
-        {renderModalAlertErr()}
-
+        <ModalError
+          error={errorModal}
+          handleCloseModal={handleCloseErrorModal}
+        />
         <h1 className={classes.title}>Simulação</h1>
         <Paper elevation={3}>
           <div className={classes.container}>

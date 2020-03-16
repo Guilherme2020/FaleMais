@@ -56,8 +56,8 @@ const SimpleTable = ({ list }) => {
   );
 };
 
-Table.propTypes = {
+SimpleTable.propTypes = {
   list: PropTypes.array
 };
 
-export default Table;
+export default SimpleTable;
