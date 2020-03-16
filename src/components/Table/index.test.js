@@ -1,5 +1,4 @@
 import React from "react";
-import Home from "../../pages/Home";
 import SimpleTable from "./index";
 import { mount, shallow } from "enzyme";
 import toJson from "enzyme-to-json";
@@ -39,11 +38,16 @@ it("test props in list table <SimpleTable/>", () => {
     list
   };
 
-  const app = mount(<Home dataTable={props.list} />);
-  console.log("app props", app.get(0).get(0));
-  // expect(app.get(0).props.dataTable).toBe(2);
-  //   console.log("............", app);
-  // expect(app.find(SimpleTable).props.list).toBe(2);
-  // expect(app.length).toHaveLength(2);
-  // expect(app.length).toBe(3);
+  const app = shallow(<SimpleTable list={props.list} />);
+  expect(app.get(0).props.children).toHaveLength(2); //acerto
+  expect(app.get(0).props.children).not.toHaveLength(3); //falha
+});
+
+it("test error props in list table <SimpleTable /> ", () => {
+  const props = {
+    list
+  };
+
+  const app = shallow(<SimpleTable list={props.list} />);
+  expect(app.get(0).props.children).toHaveLength(3); //error
 });

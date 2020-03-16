@@ -119,9 +119,6 @@ const Form = ({ listNumbers, setDatTable }) => {
       withPlan: calculateWithPlan(selectedPlan, countMin, valueOfMin),
       withoutPlan: calculateWithoutPlan(countMin, valueOfMin)
     };
-    //enviar esse objeto como callback pra minha home
-    // console.log("datable mount", dataTable);
-    //
 
     if (
       selectOrigin !== "" &&
@@ -129,8 +126,10 @@ const Form = ({ listNumbers, setDatTable }) => {
       selectedPlan !== ""
     ) {
       setDatTable(dataTable);
-
-      // setDataTableSimulate([dataTable, ...dataTableSimulate]);
+      setSelectOrigin("");
+      setSelectDestiny("");
+      setSelectedPlan("");
+      setCountMin("");
     } else {
       setErrorModal(true);
     }

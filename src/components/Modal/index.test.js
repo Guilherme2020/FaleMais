@@ -1,9 +1,9 @@
 import React from "react";
 import ModalError from "./index";
-import { mount } from "enzyme";
+import { mount, shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 
-it("should render the modal component", () => {
+it("should render the component  <Modal/>", () => {
   const closeModal = jest.fn();
 
   const props = {
@@ -14,3 +14,11 @@ it("should render the modal component", () => {
   const app = mount(<ModalError {...props} />);
   expect(toJson(app)).toMatchSnapshot();
 });
+
+// it("should validation type value props in component  <Modal/>",() => {
+//   const props = {
+//     error: true,
+//   };
+//   const app = mount(<ModalError {...props} />);
+//   expect(app)
+// })

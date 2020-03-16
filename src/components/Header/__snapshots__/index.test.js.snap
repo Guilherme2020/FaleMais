@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the header component 1`] = `
+exports[`should render the header component  1`] = `
 <Header>
   <div
     className="makeStyles-root-1"
