@@ -1,3 +1,36 @@
+<h1 align="center">
+    <img src="https://miro.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png" alt="Reactjs" width="700">
+
+</h1>
+
+<p align="center"> FaleMais is an application made using ReactJs which aims to simulate the cost of calls between different DDD'S and the cost feedback between choosing or not a usage plan.</p>
+
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License MIT">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="screenshots/falemais-02.png" alt="License MIT">
+  </a>
+</p>
+
+<br>
+
+## Features
+
+- ⚛️ **React Js**: Lib JavaScript for building interfaces.
+       
+       - Use of lib material ui.
+       - Use of ⚛️ React Hooks.
+       - Use of lib enzyme to aid in component testing.
+       - Use of componentization techniques to facilitate code reuse.       
+       - Use of data fakes to simulate communication with an api.  
+
+## Getting started
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -16,6 +49,14 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `yarn test -- --coverage`
+
+
+To check the test coverage of the created components, run the command above. We have the option of viewing the report in the browser, for a clearer view, in addition to being able to click on the components and open each one in more detail. The file is generated in:
+  
+  /projeto/coverage/lcov-report/index.html
+
 
 ### `yarn build`
 

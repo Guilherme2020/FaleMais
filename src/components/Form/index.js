@@ -13,8 +13,6 @@ import { calculateWithoutPlan, calculateWithPlan } from "../../utils/";
 import { useStyles } from "./styles";
 
 const Form = ({ listNumbers, setDatTable }) => {
-  // const listNumbers = useContext(Data);
-
   const [countMin, setCountMin] = useState("");
   const [plansSelect] = useState([
     {
