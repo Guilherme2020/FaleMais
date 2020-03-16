@@ -1,26 +1,26 @@
-export function calculateWithoutPlan(count, valueMin) {
-  let value = count * valueMin;
-  let formate = value.toLocaleString("pt-BR", {
+export function calculateWithoutPlan(countMin, valueMin) {
+  let priceWithoutPlan = countMin * valueMin;
+  let formatePrice = priceWithoutPlan.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL"
   });
-  return `${formate}`;
+  return `${formatePrice}`;
 }
 
 export function calculateWithPlan(selectedPlan, countMin, valueForMin) {
   let plan = selectedPlan;
-  let count = countMin;
-  let diff = count - plan;
-  let calc = 0;
+  let countMinParams = countMin;
+  let diff = countMinParams - plan;
+  let calcWithPlan = 0;
   const percent = (10 / 100) * valueForMin * diff;
-  // console.log(percent);
-  calc = valueForMin * diff;
 
-  let final = calc + percent;
-  if (final < 0) {
-    final = 0;
+  calcWithPlan = valueForMin * diff;
+
+  let priceWithPlan = calcWithPlan + percent;
+  if (priceWithPlan < 0) {
+    priceWithPlan = 0;
   }
-  return final.toLocaleString("pt-BR", {
+  return priceWithPlan.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL"
   });

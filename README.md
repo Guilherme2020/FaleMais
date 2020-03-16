@@ -35,6 +35,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+First, you can run:
+
+### `yarn install`
+
 In the project directory, you can run:
 
 ### `yarn start`
@@ -55,7 +59,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 To check the test coverage of the created components, run the command above. We have the option of viewing the report in the browser, for a clearer view, in addition to being able to click on the components and open each one in more detail. The file is generated in:
   
-  /projeto/coverage/lcov-report/index.html
+### `/projeto/coverage/lcov-report/index.html`
 
 
 ### `yarn build`
