@@ -120,7 +120,7 @@ const Form = ({ listNumbers, setDatTable }) => {
       withoutPlan: calculateWithoutPlan(countMin, valueOfMin)
     };
     //enviar esse objeto como callback pra minha home
-    console.log("datable mount", dataTable);
+    // console.log("datable mount", dataTable);
     //
 
     if (
@@ -129,6 +129,7 @@ const Form = ({ listNumbers, setDatTable }) => {
       selectedPlan !== ""
     ) {
       setDatTable(dataTable);
+
       // setDataTableSimulate([dataTable, ...dataTableSimulate]);
     } else {
       setErrorModal(true);
@@ -143,66 +144,68 @@ const Form = ({ listNumbers, setDatTable }) => {
       <Paper elevation={3}>
         <div className={classes.container}>
           <div className={classes.form}>
-            <FormControl variant="outlined" className={classes.root}>
-              <InputLabel
-                ref={inputLabel}
-                id="demo-simple-select-outlined-label"
-              >
-                Origem
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={selectOrigin}
-                onChange={handleChangeOrigin}
-                labelWidth={labelWidth}
-              >
-                {renderOptionsOrigin()}
-              </Select>
-            </FormControl>
-            <FormControl variant="outlined" className={classes.root}>
-              <InputLabel
-                ref={inputLabel}
-                id="demo-simple-select-outlined-label"
-              >
-                Destino
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={selectDestiny}
-                onChange={handleChangeDestiny}
-                labelWidth={labelWidth}
-              >
-                {renderOptionsDestiny()}
-              </Select>
-            </FormControl>
-            <FormControl className={classes.root}>
-              <TextField
-                id="outlined-basic"
-                label="Quantidade de Minutos"
-                variant="outlined"
-                value={countMin}
-                onChange={event => setCountMin(event.target.value)}
-              />
-            </FormControl>
-            <FormControl variant="outlined" className={classes.root}>
-              <InputLabel
-                ref={inputLabel}
-                id="demo-simple-select-outlined-label"
-              >
-                Selecione o Plano
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={selectedPlan}
-                onChange={event => setSelectedPlan(event.target.value)}
-                labelWidth={labelWidth}
-              >
-                {renderOptionsPlan()}
-              </Select>
-            </FormControl>
+            <form>
+              <FormControl variant="outlined" className={classes.root}>
+                <InputLabel
+                  ref={inputLabel}
+                  id="demo-simple-select-outlined-label"
+                >
+                  Origem
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={selectOrigin}
+                  onChange={handleChangeOrigin}
+                  labelWidth={labelWidth}
+                >
+                  {renderOptionsOrigin()}
+                </Select>
+              </FormControl>
+              <FormControl variant="outlined" className={classes.root}>
+                <InputLabel
+                  ref={inputLabel}
+                  id="demo-simple-select-outlined-label"
+                >
+                  Destino
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={selectDestiny}
+                  onChange={handleChangeDestiny}
+                  labelWidth={labelWidth}
+                >
+                  {renderOptionsDestiny()}
+                </Select>
+              </FormControl>
+              <FormControl className={classes.root}>
+                <TextField
+                  id="outlined-basic"
+                  label="Quantidade de Minutos"
+                  variant="outlined"
+                  value={countMin}
+                  onChange={event => setCountMin(event.target.value)}
+                />
+              </FormControl>
+              <FormControl variant="outlined" className={classes.root}>
+                <InputLabel
+                  ref={inputLabel}
+                  id="demo-simple-select-outlined-label"
+                >
+                  Selecione o Plano
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={selectedPlan}
+                  onChange={event => setSelectedPlan(event.target.value)}
+                  labelWidth={labelWidth}
+                >
+                  {renderOptionsPlan()}
+                </Select>
+              </FormControl>
+            </form>
           </div>
           <div className={classes.btnForm}>
             <Button

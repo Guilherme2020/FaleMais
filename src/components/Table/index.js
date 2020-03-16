@@ -23,7 +23,7 @@ const SimpleTable = ({ list }) => {
 
   return (
     <>
-      <h1 className={classes.titleTable}>Simuções dos preços de chamadas </h1>
+      <h1 className={classes.titleTable}>Simulações dos preços de chamadas </h1>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
@@ -39,7 +39,7 @@ const SimpleTable = ({ list }) => {
           </TableHead>
           <TableBody>
             {list.map(row => (
-              <TableRow key={row.id}>
+              <TableRow key={row.planChoise}>
                 <TableCell align="center">{row.origin}</TableCell>
                 <TableCell align="center">{row.destiny}</TableCell>
                 <TableCell align="center">{row.valueForMin}</TableCell>

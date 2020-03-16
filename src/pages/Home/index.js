@@ -37,7 +37,7 @@ export default function Home() {
     <React.Fragment>
       <CssBaseline />
       <Header />
-      <Container maxWidth="xs sm md lg xl">
+      <Container maxWidth="lg">
         <h1 className={classes.title}>Simulação</h1>
         <Form
           listNumbers={listNumbers}

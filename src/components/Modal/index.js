@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   Button,
   Dialog,
@@ -29,6 +30,11 @@ const ModalError = ({ error, handleCloseModal }) => {
       </DialogActions>
     </Dialog>
   );
+};
+
+ModalError.propTypes = {
+  error: PropTypes.bool,
+  handleCloseModal: PropTypes.func
 };
 
 export default ModalError;
