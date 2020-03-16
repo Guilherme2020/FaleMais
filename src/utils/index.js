@@ -17,9 +17,11 @@ export function calculateWithPlan(selectedPlan, countMin, valueForMin) {
   calcWithPlan = valueForMin * diff;
 
   let priceWithPlan = calcWithPlan + percent;
+
   if (priceWithPlan < 0) {
     priceWithPlan = 0;
   }
+
   return priceWithPlan.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL"

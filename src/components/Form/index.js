@@ -34,8 +34,8 @@ const Form = ({ listNumbers, setDatTable }) => {
   const [destinyList, setDestinyList] = useState([]);
   const [selectOrigin, setSelectOrigin] = useState("");
   const [selectDestiny, setSelectDestiny] = useState("");
-
   const [errorModal, setErrorModal] = useState(false);
+
   const classes = useStyles();
   const inputLabel = useRef(null);
   const [labelWidth, setLabelWidth] = useState(0);
@@ -73,6 +73,7 @@ const Form = ({ listNumbers, setDatTable }) => {
       );
     });
   };
+
   const renderOptionsOrigin = () => {
     return originList.map(o => {
       return (
@@ -82,6 +83,7 @@ const Form = ({ listNumbers, setDatTable }) => {
       );
     });
   };
+
   const renderOptionsDestiny = () => {
     return destinyList.map(d => {
       return (
@@ -91,6 +93,7 @@ const Form = ({ listNumbers, setDatTable }) => {
       );
     });
   };
+
   const verifyTarifOfPhone = () => {
     let valueOfMin = "5.90"; // value default case not find item in forEach
 
@@ -127,9 +130,11 @@ const Form = ({ listNumbers, setDatTable }) => {
       setErrorModal(true);
     }
   };
+
   const handleCloseErrorModal = () => {
     setErrorModal(false);
   };
+
   return (
     <>
       <ModalError error={errorModal} handleCloseModal={handleCloseErrorModal} />

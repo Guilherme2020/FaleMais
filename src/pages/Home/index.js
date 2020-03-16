@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-
 import { CssBaseline, Typography, Container } from "@material-ui/core";
 import SimpleTable from "../../components/Table";
 import Header from "../../components/Header";
-
 import Form from "../../components/Form";
 import api from "../../services/api";
 import { useStyles } from "./styles";
@@ -17,7 +15,6 @@ export default function Home() {
   const onFetchData = async () => {
     try {
       let response = await api.fetchData();
-
       setListNumbers(response);
       console.log("response", response);
     } catch (e) {
