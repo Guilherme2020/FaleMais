@@ -34,7 +34,7 @@ const Form = ({ listNumbers, setDatTable }) => {
   const [destinyList, setDestinyList] = useState([]);
   const [selectOrigin, setSelectOrigin] = useState("");
   const [selectDestiny, setSelectDestiny] = useState("");
-  // const [dataTable, setDataTableSimulate] = useState([]);
+
   const [errorModal, setErrorModal] = useState(false);
   const classes = useStyles();
   const inputLabel = useRef(null);

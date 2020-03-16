@@ -42,7 +42,7 @@ it("test props in list table <SimpleTable/>", () => {
   expect(app.get(0).props.children).toHaveLength(2); //acerto
   expect(app.get(0).props.children).not.toHaveLength(3); //falha
 });
-
+//example test for error ppros in list
 // it("test error props in list table <SimpleTable /> ", () => {
 //   const props = {
 //     list
