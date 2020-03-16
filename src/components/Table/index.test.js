@@ -43,11 +43,11 @@ it("test props in list table <SimpleTable/>", () => {
   expect(app.get(0).props.children).not.toHaveLength(3); //falha
 });
 
-it("test error props in list table <SimpleTable /> ", () => {
-  const props = {
-    list
-  };
+// it("test error props in list table <SimpleTable /> ", () => {
+//   const props = {
+//     list
+//   };
 
-  const app = shallow(<SimpleTable list={props.list} />);
-  expect(app.get(0).props.children).toHaveLength(3); //error
-});
+//   const app = shallow(<SimpleTable list={props.list} />);
+//   expect(app.get(0).props.children).toHaveLength(3); //error
+// });

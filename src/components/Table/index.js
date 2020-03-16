@@ -8,29 +8,23 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650
-  },
-  titleTable: {
-    textAlign: "center"
-  }
-});
+import { useStyles } from "./styles";
 
 const SimpleTable = ({ list }) => {
   const classes = useStyles();
 
   return (
     <>
-      <h1 className={classes.titleTable}>Simulações dos preços de chamadas </h1>
+      <h1 className={classes.titleTable}>
+        Lista das suas simulações dos preços de chamadas{" "}
+      </h1>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell align="center">Origem&nbsp;</TableCell>
               <TableCell align="center">Destino&nbsp;</TableCell>
-              <TableCell align="center">$/Min/&nbsp;</TableCell>
+              <TableCell align="center">$/Min&nbsp;</TableCell>
               <TableCell align="center">Tempo</TableCell>
               <TableCell align="center">Plano FM</TableCell>
               <TableCell align="center">Com o Plano</TableCell>

@@ -20,7 +20,6 @@ export default function Home() {
 
       setListNumbers(response);
       console.log("response", response);
-      // console.log("list numbers", listNumbers)
     } catch (e) {
       console.log(e);
     }
@@ -38,17 +37,10 @@ export default function Home() {
       <CssBaseline />
       <Header />
       <Container maxWidth="lg">
-        <h1 className={classes.title}>Simulação</h1>
-        <Form
-          listNumbers={listNumbers}
-          setDatTable={setDatTable}
-          // verifyTarifOfPhone={verifyTarifOfPhone}
-        />
+        <h1 className={classes.title}>Simulação de chamada</h1>
+        <Form listNumbers={listNumbers} setDatTable={setDatTable} />
 
-        <Typography
-          component="div"
-          style={{ backgroundColor: "transparent", height: 30 }}
-        />
+        <Typography component="div" className={classes.styleTypography} />
         {dataTable.length > 0 && <SimpleTable list={dataTable} />}
       </Container>
     </React.Fragment>

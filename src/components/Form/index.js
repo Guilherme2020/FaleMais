@@ -94,11 +94,6 @@ const Form = ({ listNumbers, setDatTable }) => {
     });
   };
   const verifyTarifOfPhone = () => {
-    // console.log(selectOrigin);
-    // console.log(selectDestiny);
-    // console.log(countMin);
-    // console.log(selectedPlan);
-
     let valueOfMin = "5.90"; // value default case not find item in forEach
 
     listNumbers.forEach(i => {

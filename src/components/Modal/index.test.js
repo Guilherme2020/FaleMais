@@ -14,11 +14,3 @@ it("should render the component  <Modal/>", () => {
   const app = mount(<ModalError {...props} />);
   expect(toJson(app)).toMatchSnapshot();
 });
-
-// it("should validation type value props in component  <Modal/>",() => {
-//   const props = {
-//     error: true,
-//   };
-//   const app = mount(<ModalError {...props} />);
-//   expect(app)
-// })
